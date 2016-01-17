@@ -50,10 +50,12 @@ print("Getting Skill Data...", end = ' ')
 rawSkillsData = requests.get(diyUrl(), params=PARAMS['skills'])
 print("Done.")
 
-# Get Skill JSON and check length
+# Get Skill JSON
 rawSkillJSON = rawSkillsData.json()
+
+# Get Skill JSON length
 if len(rawSkillJSON['response']) == PARAMS['skills']['limit']:
-    print("WARN: Skill list has length of {}, may want to increase limit?".format(PARAMS['skills']['limit']))
+    print("\033[91mWARN: Skill list has length of {}, may want to increase limit?\033[00m".format(PARAMS['skills']['limit']))
 else:
     print("JSON items: {0} out of {1}, {2} left".format(len(rawSkillJSON['response']), PARAMS['skills']['limit'], PARAMS['skills']['limit']-len(rawSkillJSON['response'])))
 
@@ -80,8 +82,8 @@ for skill in skills:
     
     # Check Length
     if len(rawChallengeJSON['response']) == PARAMS['challenges']['limit']:
-        print("WARN:", end = ' ')
-    print("{0} items out of {1}, {2} left...".format(len(rawChallengeJSON['response']), PARAMS['challenges']['limit'], PARAMS['challenges']['limit']-len(rawChallengeJSON['response'])), end = ' ')
+        print("\033[91mWARN:", end = ' ')
+    print("{0} items out of {1}, {2} left...\033[00m".format(len(rawChallengeJSON['response']), PARAMS['challenges']['limit'], PARAMS['challenges']['limit']-len(rawChallengeJSON['response'])), end = ' ')
     
     # Filter
     challengeData = jq.jq(FILTERS['challenge'](skill)).transform(rawChallengeJSON)
