@@ -8,7 +8,7 @@ FILE = "data.json"
 # Filters used in jq
 
 def ach(skill):
-        return ".response | [.[] | {{id, skill: \"{}\", title, short, description, stats, meta, image: .image.web_460}}]".format(skill)
+        return ".response | [.[] | {{challenge_id: .id, skill: \"{}\", title, short, description, stats, meta, image: .image.web_460}}]".format(skill)
 
 FILTERS = {
     'skills': ".response|[.[]|{id, url, title, description, position, image: (\"https:\" + .images.medium), grammar, pole, color, notes}]",
