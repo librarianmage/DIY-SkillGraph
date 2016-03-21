@@ -83,5 +83,15 @@
         "source": 1691,
         "target": 1963,
         "type": "related"
+    },
+    {
+        "source": 1588,
+        "target": [719, 389],
+        "type": "completes"
+    },
+    {
+        "source": 719,
+        "target": 389,
+        "type": "completes"
     }
 ]
